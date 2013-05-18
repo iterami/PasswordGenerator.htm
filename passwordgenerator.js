@@ -38,7 +38,7 @@ function save(){
     /*validate settings*/
     i=1;
     do{
-        if(isNaN(get([0,7][i]).value) || get([0,7][i]).value<1 || get([0,7][i]).value===[15,1][i]){
+        if(isNaN(get([0,7][i]).value) || get([0,7][i]).value<1 || get([0,7][i]).value==[15,1][i]){
             get([0,7][i]).value = [15,1][i];
             ls.removeItem('password-generator-'+[0,7][i])
         }else{
@@ -89,9 +89,9 @@ do{
     get(i+1).checked = ls.getItem('password-generator-'+(i+1))==null
 }while(i--);
 
-window.onkeydown=function(e){
-    i = window.event?event:e;
-    i = i.charCode?i.charCode:i.keyCode;
+window.onkeydown = function(e){
+    i = window.event ? event : e;
+    i = i.charCode ? i.charCode : i.keyCode;
     if(i===72){/*H*/
         generate()
     }
