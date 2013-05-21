@@ -1,17 +1,17 @@
 function generate(){
     save();
 
-    if(charlist.length>0){
+    if(charlist.length > 0){
         temp = '';
 
         /*create new password*/
-        ii = get(7).value-1;
+        ii = get(7).value - 1;
         do{
             /*add character to current password*/
-            i = get(0).value-1;
+            i = get(0).value - 1;
             do{
                 /*select random characters from possible character list*/
-                temp += charlist.substr(Math.floor(Math.random()*charlist.length-1),1)
+                temp += charlist.substr(Math.floor(Math.random() * charlist.length - 1),1)
             }while(i--);
             temp += '<br>'
         }while(ii--);
@@ -28,7 +28,12 @@ function get(i){
 function reset(){
     if(confirm('Reset settings?')){
         get(0).value = 15;
-        get(1).checked = get(2).checked = get(3).checked = get(4).checked = get(5).checked = get(6).checked=1;
+        get(1).checked = 1;
+        get(2).checked = 1;
+        get(3).checked = 1;
+        get(4).checked = 2;
+        get(5).checked = 3;
+        get(6).checked = 1;
         get(7).value = 1;
         get('password').innerHTML = '';
         save()
@@ -36,13 +41,13 @@ function reset(){
 }
 function save(){
     /*validate settings*/
-    i=1;
+    i = 1;
     do{
-        if(isNaN(get([0,7][i]).value) || get([0,7][i]).value<1 || get([0,7][i]).value==[15,1][i]){
+        if(isNaN(get([0,7][i]).value) || get([0,7][i]).value < 1 || get([0,7][i]).value == [15,1][i]){
             get([0,7][i]).value = [15,1][i];
-            ls.removeItem('password-generator-'+[0,7][i])
+            ls.removeItem('password-generator-' + [0,7][i])
         }else{
-            ls.setItem('password-generator-'+[0,7][i],get([0,7][i]).value)
+            ls.setItem('password-generator-' + [0,7][i],get([0,7][i]).value)
         }
     }while(i--);
 
@@ -50,29 +55,29 @@ function save(){
     i = 5;
     charlist = '';
     do{
-        if(get(i+1).checked){
-            if(i===0){
+        if(get(i + 1).checked){
+            if(i === 0){
                 /*lowercase letters*/
                 charlist += 'abcdefghijklmnopqrstuvwxyz'
-            }else if(i===1){
+            }else if(i === 1){
                 /*lowercase special letters*/
                 charlist += 'áčďéěiíňóřšťúůýž'
-            }else if(i===2){
+            }else if(i === 2){
                 /*numbers*/
                 charlist += '0123456789'
-            }else if(i===3){
+            }else if(i === 3){
                 /*symbols*/
                 charlist += '~!@#$%^&*()-_=+[{]}|,.;:"?/'
-            }else if(i===4){
+            }else if(i === 4){
                 /*uppercase letters*/
                 charlist += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
             }else{
                 /*upercase special letters*/
                 charlist += 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ'
             }
-            ls.removeItem('password-generator-'+(i+1))
+            ls.removeItem('password-generator-' + (i + 1))
         }else{
-            ls.setItem('password-generator-'+(i+1),1)
+            ls.setItem('password-generator-' + (i + 1),1)
         }
     }while(i--)
 }
@@ -92,7 +97,7 @@ do{
 window.onkeydown = function(e){
     i = window.event ? event : e;
     i = i.charCode ? i.charCode : i.keyCode;
-    if(i===72){/*H*/
+    if(i === 72){/*H*/
         generate()
     }
 }
