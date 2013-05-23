@@ -22,9 +22,11 @@ function generate(){
         get('password').innerHTML = 'You must select at least one option.'
     }
 }
+
 function get(i){
     return document.getElementById(i)
 }
+
 function reset(){
     if(confirm('Reset settings?')){
         get(0).value = 15;
@@ -39,6 +41,7 @@ function reset(){
         save()
     }
 }
+
 function save(){
     /*validate settings*/
     i = 1;
@@ -81,6 +84,7 @@ function save(){
         }
     }while(i--)
 }
+
 var charlist = '';
 var i = 5;
 var ii = 5;
