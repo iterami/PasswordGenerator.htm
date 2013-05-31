@@ -5,7 +5,7 @@ function generate(){
         temp = '';
 
         /*create new password*/
-        ii = get(7).value - 1;
+        j = get(7).value - 1;
         do{
             /*add character to current password*/
             i = get(0).value - 1;
@@ -14,7 +14,7 @@ function generate(){
                 temp += charlist.substr(Math.floor(Math.random() * charlist.length - 1),1)
             }while(i--);
             temp += '<br>'
-        }while(ii--);
+        }while(j--);
 
         get('password').innerHTML = temp;
         temp = ''
@@ -44,15 +44,18 @@ function reset(){
 
 function save(){
     /*validate settings*/
-    i = 1;
-    do{
-        if(isNaN(get([0,7][i]).value) || get([0,7][i]).value < 1 || get([0,7][i]).value == [15,1][i]){
-            get([0,7][i]).value = [15,1][i];
-            ls.removeItem('password-generator-' + [0,7][i])
-        }else{
-            ls.setItem('password-generator-' + [0,7][i],get([0,7][i]).value)
-        }
-    }while(i--);
+    if(isNaN(get(0).value) || get(0).value < 1 || get(0).value == 15){
+        get(0).value = 15;
+        ls.removeItem('password-generator-0')
+    }else{
+        ls.setItem('password-generator-0',get(0).value)
+    }
+    if(isNaN(get(7).value) || get(7).value < 1 || get(7).value == 1){
+        get(7).value = 1;
+        ls.removeItem('password-generator-7')
+    }else{
+        ls.setItem('password-generator-7',get(7).value)
+    }
 
     /*create list of possible characters*/
     i = 5;
@@ -86,21 +89,24 @@ function save(){
 }
 
 var charlist = '';
-var i = 5;
-var ii = 5;
+var i = 0;
+var j = 5;
 var ls = window.localStorage;
 var temp = '';
 
-get(0).value = ls.getItem('password-generator-0')===null ? 15 : ls.getItem('password-generator-0');
-get(7).value = ls.getItem('password-generator-7')===null ? 1 : ls.getItem('password-generator-7');
-
-do{
-    get(i+1).checked = ls.getItem('password-generator-'+(i+1))==null
-}while(i--);
+get(0).value = ls.getItem('password-generator-0') === null ? 15 : ls.getItem('password-generator-0');
+get(1).checked = ls.getItem('password-generator-1') == null;
+get(2).checked = ls.getItem('password-generator-2') == null;
+get(3).checked = ls.getItem('password-generator-3') == null;
+get(4).checked = ls.getItem('password-generator-4') == null;
+get(5).checked = ls.getItem('password-generator-5') == null;
+get(6).checked = ls.getItem('password-generator-6') == null;
+get(7).value = ls.getItem('password-generator-7') === null ? 1 : ls.getItem('password-generator-7');
 
 window.onkeydown = function(e){
     i = window.event ? event : e;
     i = i.charCode ? i.charCode : i.keyCode;
+
     if(i === 72){/*H*/
         generate()
     }
