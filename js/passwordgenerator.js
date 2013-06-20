@@ -4,27 +4,28 @@ function generate(){
     if(charlist.length > 0){
         temp = '';
 
-        /*create new password*/
+        /* create new password */
         j = get(7).value - 1;
         do{
-            /*add character to current password*/
+            /* add character to current password */
             i = get(0).value - 1;
             do{
-                /*select random characters from possible character list*/
-                temp += charlist.substr(Math.floor(Math.random() * charlist.length - 1),1)
+                /* select random characters from possible character list */
+                temp += charlist.substr(Math.floor(Math.random() * charlist.length - 1), 1);
             }while(i--);
-            temp += '<br>'
+            temp += '<br>';
         }while(j--);
 
         get('password').innerHTML = temp;
-        temp = ''
+        temp = '';
+
     }else{
-        get('password').innerHTML = 'You must select at least one option.'
+        get('password').innerHTML = 'You must select at least one option.';
     }
 }
 
 function get(i){
-    return document.getElementById(i)
+    return document.getElementById(i);
 }
 
 function reset(){
@@ -38,54 +39,68 @@ function reset(){
         get(6).checked = 1;
         get(7).value = 1;
         get('password').innerHTML = '';
-        save()
+
+        save();
     }
 }
 
 function save(){
-    /*validate settings*/
+    /* validate settings */
     if(isNaN(get(0).value) || get(0).value < 1 || get(0).value == 15){
         get(0).value = 15;
-        ls.removeItem('password-generator-0')
+        ls.removeItem('password-generator-0');
+
     }else{
-        ls.setItem('password-generator-0',get(0).value)
-    }
-    if(isNaN(get(7).value) || get(7).value < 1 || get(7).value == 1){
-        get(7).value = 1;
-        ls.removeItem('password-generator-7')
-    }else{
-        ls.setItem('password-generator-7',get(7).value)
+        ls.setItem(
+            'password-generator-0',
+            get(0).value
+        );
     }
 
-    /*create list of possible characters*/
+    if(isNaN(get(7).value) || get(7).value < 1 || get(7).value == 1){
+        get(7).value = 1;
+        ls.removeItem('password-generator-7');
+
+    }else{
+        ls.setItem(
+            'password-generator-7',
+            get(7).value
+        );
+    }
+
+    /* create list of possible characters */
     i = 5;
     charlist = '';
     do{
         if(get(i + 1).checked){
             if(i === 0){
-                /*lowercase letters*/
-                charlist += 'abcdefghijklmnopqrstuvwxyz'
+                /* lowercase letters */
+                charlist += 'abcdefghijklmnopqrstuvwxyz';
             }else if(i === 1){
-                /*lowercase special letters*/
-                charlist += 'áčďéěiíňóřšťúůýž'
+                /* lowercase special letters */
+                charlist += 'áčďéěiíňóřšťúůýž';
             }else if(i === 2){
-                /*numbers*/
-                charlist += '0123456789'
+                /* numbers */
+                charlist += '0123456789';
             }else if(i === 3){
-                /*symbols*/
-                charlist += '~!@#$%^&*()-_=+[{]}|,.;:"?/'
+                /* symbols */
+                charlist += '~!@#$%^&*()-_=+[{]}|,.;:"?/';
             }else if(i === 4){
-                /*uppercase letters*/
-                charlist += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+                /* uppercase letters */
+                charlist += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             }else{
-                /*upercase special letters*/
-                charlist += 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ'
+                /* upercase special letters */
+                charlist += 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ';
             }
-            ls.removeItem('password-generator-' + (i + 1))
+            ls.removeItem('password-generator-' + (i + 1));
+
         }else{
-            ls.setItem('password-generator-' + (i + 1),1)
+            ls.setItem(
+                'password-generator-' + (i + 1),
+                1
+            );
         }
-    }while(i--)
+    }while(i--);
 }
 
 var charlist = '';
@@ -107,7 +122,7 @@ window.onkeydown = function(e){
     i = window.event ? event : e;
     i = i.charCode ? i.charCode : i.keyCode;
 
-    if(i === 72){/*H*/
-        generate()
+    if(i === 72){/* H */
+        generate();
     }
 }
