@@ -13,6 +13,7 @@ function generate(){
                 /* select random characters from possible character list */
                 temp += charlist.substr(Math.floor(Math.random() * charlist.length - 1), 1);
             }while(i--);
+
             temp += '<br>';
         }while(j--);
 
@@ -76,22 +77,28 @@ function save(){
             if(i === 0){
                 /* lowercase letters */
                 charlist += 'abcdefghijklmnopqrstuvwxyz';
+
             }else if(i === 1){
                 /* lowercase special letters */
                 charlist += 'áčďéěiíňóřšťúůýž';
+
             }else if(i === 2){
                 /* numbers */
                 charlist += '0123456789';
+
             }else if(i === 3){
                 /* symbols */
                 charlist += '~!@#$%^&*()-_=+[{]}|,.;:"?/';
+
             }else if(i === 4){
                 /* uppercase letters */
                 charlist += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
             }else{
                 /* upercase special letters */
                 charlist += 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ';
             }
+
             ls.removeItem('password-generator-' + (i + 1));
 
         }else{
