@@ -4,13 +4,13 @@ function generate(){
     if(charlist.length > 0){
         temp = '';
 
-        /* create new password */
+        // create new password
         j = get(7).value - 1;
         do{
-            /* add character to current password */
+            // add character to current password
             i = get(0).value - 1;
             do{
-                /* select random characters from possible character list */
+                // select random characters from possible character list
                 temp += charlist.substr(Math.floor(Math.random() * charlist.length - 1), 1);
             }while(i--);
 
@@ -46,7 +46,7 @@ function reset(){
 }
 
 function save(){
-    /* validate settings */
+    // validate settings
     if(isNaN(get(0).value) || get(0).value < 1 || get(0).value == 15){
         get(0).value = 15;
         ls.removeItem('password-generator-0');
@@ -69,33 +69,33 @@ function save(){
         );
     }
 
-    /* create list of possible characters */
+    // create list of possible characters
     i = 5;
     charlist = '';
     do{
         if(get(i + 1).checked){
             if(i === 0){
-                /* lowercase letters */
+                // lowercase letters
                 charlist += 'abcdefghijklmnopqrstuvwxyz';
 
             }else if(i === 1){
-                /* lowercase special letters */
+                // lowercase special letters
                 charlist += 'áčďéěiíňóřšťúůýž';
 
             }else if(i === 2){
-                /* numbers */
+                // numbers
                 charlist += '0123456789';
 
             }else if(i === 3){
-                /* symbols */
+                // symbols
                 charlist += '~!@#$%^&*()-_=+[{]}|,.;:"?/';
 
             }else if(i === 4){
-                /* uppercase letters */
+                // uppercase letters
                 charlist += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
             }else{
-                /* upercase special letters */
+                // upercase special letters
                 charlist += 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ';
             }
 
@@ -129,7 +129,7 @@ window.onkeydown = function(e){
     i = window.event ? event : e;
     i = i.charCode ? i.charCode : i.keyCode;
 
-    if(i === 72){/* H */
+    if(i === 72){// H
         generate();
     }
 }
