@@ -2,40 +2,43 @@ function generate(){
     save();
 
     if(charlist.length > 0){
-        temp = '';
+        var temp = '';
 
         // create new password
-        j = document.getElementById(7).value - 1;
+        var password_loopcounter = document.getElementById('number-of-passwords').value - 1;
         do{
             // add character to current password
-            i = document.getElementById(0).value - 1;
+            var character_loopcounter = document.getElementById('length').value - 1;
             do{
                 // select random characters from possible character list
-                temp += charlist.substr(Math.floor(Math.random() * charlist.length - 1), 1);
-            }while(i--);
+                temp += charlist.substr(
+                  Math.floor(Math.random() * charlist.length - 1),
+                  1
+                );
+            }while(character_loopcounter--);
 
             temp += '<br>';
-        }while(j--);
+        }while(password_loopcounter--);
 
-        document.getElementById('password').innerHTML = temp;
+        document.getElementById('passwords').innerHTML = temp;
         temp = '';
 
     }else{
-        document.getElementById('password').innerHTML = 'You must select at least one option.';
+        document.getElementById('passwords').innerHTML = 'You must select at least one option.';
     }
 }
 
 function reset(){
     if(confirm('Reset settings?')){
-        document.getElementById(0).value = 15;
-        document.getElementById(1).checked = 1;
-        document.getElementById(2).checked = 1;
-        document.getElementById(3).checked = 1;
-        document.getElementById(4).checked = 2;
-        document.getElementById(5).checked = 3;
-        document.getElementById(6).checked = 1;
-        document.getElementById(7).value = 1;
-        document.getElementById('password').innerHTML = '';
+        document.getElementById('latin-lowercase').checked = 1;
+        document.getElementById('latin-uppercase').checked = 3;
+        document.getElementById('length').value = 15;
+        document.getElementById('number-of-passwords').value = 1;
+        document.getElementById('numbers').checked = 1;
+        document.getElementById('other-lowercase').checked = 1;
+        document.getElementById('other-uppercase').checked = 1;
+        document.getElementById('passwords').innerHTML = '';
+        document.getElementById('symbols').checked = 2;
 
         save();
     }
@@ -43,96 +46,119 @@ function reset(){
 
 function save(){
     // validate settings
-    if(isNaN(document.getElementById(0).value)
-      || document.getElementById(0).value < 1
-      || document.getElementById(0).value == 15){
-        document.getElementById(0).value = 15;
-        window.localStorage.removeItem('password-generator-0');
+
+    if(isNaN(document.getElementById('length').value)
+      || document.getElementById('length').value < 1
+      || document.getElementById('length').value == 15){
+        document.getElementById('length').value = 15;
+        window.localStorage.removeItem('password-generator-length');
 
     }else{
         window.localStorage.setItem(
-            'password-generator-0',
-            document.getElementById(0).value
+          'password-generator-length',
+          document.getElementById('length').value
         );
     }
 
-    if(isNaN(document.getElementById(7).value)
-      || document.getElementById(7).value < 1
-      || document.getElementById(7).value == 1){
-        document.getElementById(7).value = 1;
-        window.localStorage.removeItem('password-generator-7');
+    if(isNaN(document.getElementById('number-of-passwords').value)
+      || document.getElementById('number-of-passwords').value < 1
+      || document.getElementById('number-of-passwords').value == 1){
+        document.getElementById('number-of-passwords').value = 1;
+        window.localStorage.removeItem('password-generator-number-of-passwords');
 
     }else{
         window.localStorage.setItem(
-            'password-generator-7',
-            document.getElementById(7).value
+          'password-generator-number-of-passwords',
+          document.getElementById('number-of-passwords').value
         );
     }
 
     // create list of possible characters
-    i = 5;
+    // if not checked, store value in localStorage
     charlist = '';
-    do{
-        if(document.getElementById(i + 1).checked){
-            if(i === 0){
-                // lowercase letters
-                charlist += 'abcdefghijklmnopqrstuvwxyz';
 
-            }else if(i === 1){
-                // lowercase special letters
-                charlist += 'áčďéěiíňóřšťúůýž';
+    if(document.getElementById('latin-lowercase').checked){
+        charlist += 'abcdefghijklmnopqrstuvwxyz';
+        window.localStorage.removeItem('password-generator-latin-lowercase');
+    }else{
+        window.localStorage.setItem(
+          'password-generator-latin-lowercase',
+          1
+        );
+    }
 
-            }else if(i === 2){
-                // numbers
-                charlist += '0123456789';
+    if(document.getElementById('latin-uppercase').checked){
+        charlist += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        window.localStorage.removeItem('password-generator-latin-uppercase');
+    }else{
+        window.localStorage.setItem(
+          'password-generator-latin-uppercase',
+          1
+        );
+    }
 
-            }else if(i === 3){
-                // symbols
-                charlist += '~!@#$%^&*()-_=+[{]}|,.;:"?/';
+    if(document.getElementById('numbers').checked){
+        charlist += '0123456789';
+        window.localStorage.removeItem('password-generator-numbers');
+    }else{
+        window.localStorage.setItem(
+          'password-generator-numbers',
+          1
+        );
+    }
 
-            }else if(i === 4){
-                // uppercase letters
-                charlist += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    if(document.getElementById('other-lowercase').checked){
+        charlist += 'áčďéěiíňóřšťúůýž';
+        window.localStorage.removeItem('password-generator-other-lowercase');
+    }else{
+        window.localStorage.setItem(
+          'password-generator-other-lowercase',
+          1
+        );
+    }
 
-            }else{
-                // upercase special letters
-                charlist += 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ';
-            }
+    if(document.getElementById('other-uppercase').checked){
+        charlist += 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ';
+        window.localStorage.removeItem('password-generator-other-uppercase');
+    }else{
+        window.localStorage.setItem(
+          'password-generator-other-uppercase',
+          1
+        );
+    }
 
-            window.localStorage.removeItem('password-generator-' + (i + 1));
-
-        }else{
-            window.localStorage.setItem(
-                'password-generator-' + (i + 1),
-                1
-            );
-        }
-    }while(i--);
+    if(document.getElementById('symbols').checked){
+        charlist += '~!@#$%^&*()-_=+[{]}|,.;:"?/';
+        window.localStorage.removeItem('password-generator-symbols');
+    }else{
+        window.localStorage.setItem(
+          'password-generator-symbols',
+          1
+        );
+    }
 }
 
 var charlist = '';
-var i = 0;
-var j = 5;
-var temp = '';
 
-document.getElementById(0).value = window.localStorage.getItem('password-generator-0') === null
+// check or uncheck settings based on localStorage
+document.getElementById('length').value = window.localStorage.getItem('password-generator-length') === null
   ? 15
-  : window.localStorage.getItem('password-generator-0');
-document.getElementById(1).checked = window.localStorage.getItem('password-generator-1') == null;
-document.getElementById(2).checked = window.localStorage.getItem('password-generator-2') == null;
-document.getElementById(3).checked = window.localStorage.getItem('password-generator-3') == null;
-document.getElementById(4).checked = window.localStorage.getItem('password-generator-4') == null;
-document.getElementById(5).checked = window.localStorage.getItem('password-generator-5') == null;
-document.getElementById(6).checked = window.localStorage.getItem('password-generator-6') == null;
-document.getElementById(7).value = window.localStorage.getItem('password-generator-7') === null
+  : window.localStorage.getItem('password-generator-length');
+document.getElementById('latin-lowercase').checked = window.localStorage.getItem('password-generator-latin-lowercase') == null;
+document.getElementById('latin-uppercase').checked = window.localStorage.getItem('password-generator-latin-uppercase') == null;
+document.getElementById('number-of-passwords').value = window.localStorage.getItem('password-generator-number-of-passwords') === null
   ? 1
-  : window.localStorage.getItem('password-generator-7');
+  : window.localStorage.getItem('password-generator-number-of-passwords');
+document.getElementById('numbers').checked = window.localStorage.getItem('password-generator-numbers') == null;
+document.getElementById('other-lowercase').checked = window.localStorage.getItem('password-generator-other-lowercase') == null;
+document.getElementById('other-uppercase').checked = window.localStorage.getItem('password-generator-other-uppercase') == null;
+document.getElementById('symbols').checked = window.localStorage.getItem('password-generator-symbols') == null;
 
 window.onkeydown = function(e){
-    i = window.event ? event : e;
-    i = i.charCode ? i.charCode : i.keyCode;
+    var key = window.event ? event : e;
+    key = key.charCode ? key.charCode : key.keyCode;
 
-    if(i === 72){// H
+    if(key === 72){// H
         generate();
     }
-}
+};
