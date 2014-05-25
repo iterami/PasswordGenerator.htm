@@ -108,7 +108,7 @@ function save(){
     }
 
     if(document.getElementById('other-lowercase').checked){
-        charlist += 'áčďéěiíňóřšťúůýž';
+        charlist += document.getElementById('other-lowercase-touse').value;
         window.localStorage.removeItem('password-generator-other-lowercase');
     }else{
         window.localStorage.setItem(
@@ -118,7 +118,7 @@ function save(){
     }
 
     if(document.getElementById('other-uppercase').checked){
-        charlist += 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ';
+        charlist += document.getElementById('other-uppercase-touse').value;
         window.localStorage.removeItem('password-generator-other-uppercase');
     }else{
         window.localStorage.setItem(
@@ -128,7 +128,7 @@ function save(){
     }
 
     if(document.getElementById('symbols').checked){
-        charlist += '~!@#$%^&*()-_=+[{]}|,.;:"?/';
+        charlist += document.getElementById('symbols-touse').value;
         window.localStorage.removeItem('password-generator-symbols');
     }else{
         window.localStorage.setItem(
@@ -151,8 +151,11 @@ document.getElementById('number-of-passwords').value = window.localStorage.getIt
   : window.localStorage.getItem('password-generator-number-of-passwords');
 document.getElementById('numbers').checked = window.localStorage.getItem('password-generator-numbers') == null;
 document.getElementById('other-lowercase').checked = window.localStorage.getItem('password-generator-other-lowercase') == null;
+document.getElementById('other-lowercase-touse').value = 'áčďéěiíňóřšťúůýž';
 document.getElementById('other-uppercase').checked = window.localStorage.getItem('password-generator-other-uppercase') == null;
+document.getElementById('other-uppercase-touse').value = 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ';
 document.getElementById('symbols').checked = window.localStorage.getItem('password-generator-symbols') == null;
+document.getElementById('symbols-touse').value = '~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?';
 
 window.onkeydown = function(e){
     var key = window.event ? event : e;
