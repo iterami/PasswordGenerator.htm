@@ -11,11 +11,15 @@ function generate(){
             var character_loopcounter = document.getElementById('length').value - 1;
             do{
                 // select random characters from possible character list
+                // handle the HTML symbols
                 // and add it to the passwords string
                 passwords += charlist.substr(
                   Math.floor(Math.random() * charlist.length - 1),
                   1
-                );
+                ).replace(/&/g,'&amp;')
+                 .replace(/>/g,'&gt;')
+                 .replace(/</g,'&lt;')
+                 .replace(/"/g,'&quot;');
             }while(character_loopcounter--);
 
             passwords += '<br>';
