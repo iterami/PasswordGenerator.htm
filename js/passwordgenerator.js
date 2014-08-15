@@ -34,15 +34,15 @@ function generate(){
 
 function reset(){
     if(confirm('Reset settings?')){
-        document.getElementById('latin-lowercase').checked = 1;
-        document.getElementById('latin-uppercase').checked = 3;
+        document.getElementById('latin-lowercase').checked = true;
+        document.getElementById('latin-uppercase').checked = true;
         document.getElementById('length').value = 15;
         document.getElementById('number-of-passwords').value = 1;
-        document.getElementById('numbers').checked = 1;
-        document.getElementById('other-lowercase').checked = 1;
-        document.getElementById('other-uppercase').checked = 1;
+        document.getElementById('numbers').checked = true;
+        document.getElementById('other-lowercase').checked = true;
+        document.getElementById('other-uppercase').checked = true;
         document.getElementById('passwords').innerHTML = '';
-        document.getElementById('symbols').checked = 2;
+        document.getElementById('symbols').checked = true;
 
         save();
     }
