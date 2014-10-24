@@ -1,55 +1,57 @@
 function generate(){
     save();
 
-    if(charlist.length > 0){
-        var passwords = '';
-
-        // create new password
-        var password_loopcounter = document.getElementById('number-of-passwords').value - 1;
-        do{
-            // add character to current password
-            var character_loopcounter = document.getElementById('length').value - 1;
-            do{
-                // select random characters from possible character list
-                // handle the HTML symbols
-                // and add it to the passwords string
-                passwords += charlist.substr(
-                  Math.floor(Math.random() * charlist.length - 1),
-                  1
-                ).replace(/&/g,'&amp;') // &
-                 .replace(/>/g,'&gt;') // >
-                 .replace(/</g,'&lt;') // <
-                 .replace(/"/g,'&quot;'); // "
-            }while(character_loopcounter--);
-
-            passwords += '<br>';
-        }while(password_loopcounter--);
-
-        document.getElementById('passwords').innerHTML = passwords;
-
-    }else{
+    if(charlist.length <= 0){
         document.getElementById('passwords').innerHTML = 'You must select at least one option.';
+        return;
     }
+
+    var passwords = '';
+
+    // Create new password.
+    var password_loopcounter = document.getElementById('number-of-passwords').value - 1;
+    do{
+        // Add character to current password.
+        var character_loopcounter = document.getElementById('length').value - 1;
+        do{
+            // Select random characters from possible character list...
+            //   ...handle the HTML symbols...
+            //   ...and add it to the passwords string.
+            passwords += charlist.substr(
+              Math.floor(Math.random() * charlist.length - 1),
+              1
+            ).replace(/&/g,'&amp;') // &
+             .replace(/>/g,'&gt;') // >
+             .replace(/</g,'&lt;') // <
+             .replace(/"/g,'&quot;'); // "
+        }while(character_loopcounter--);
+
+        passwords += '<br>';
+    }while(password_loopcounter--);
+
+    document.getElementById('passwords').innerHTML = passwords;
 }
 
 function reset(){
-    if(confirm('Reset settings?')){
-        document.getElementById('latin-lowercase').checked = true;
-        document.getElementById('latin-uppercase').checked = true;
-        document.getElementById('length').value = 15;
-        document.getElementById('number-of-passwords').value = 1;
-        document.getElementById('numbers').checked = true;
-        document.getElementById('other-lowercase').checked = true;
-        document.getElementById('other-uppercase').checked = true;
-        document.getElementById('passwords').innerHTML = '';
-        document.getElementById('symbols').checked = true;
-
-        save();
+    if(!confirm('Reset settings?')){
+        return;
     }
+
+    document.getElementById('latin-lowercase').checked = true;
+    document.getElementById('latin-uppercase').checked = true;
+    document.getElementById('length').value = 15;
+    document.getElementById('number-of-passwords').value = 1;
+    document.getElementById('numbers').checked = true;
+    document.getElementById('other-lowercase').checked = true;
+    document.getElementById('other-uppercase').checked = true;
+    document.getElementById('passwords').innerHTML = '';
+    document.getElementById('symbols').checked = true;
+
+    save();
 }
 
 function save(){
-    // validate settings
+    // Validate settings.
 
     if(isNaN(document.getElementById('length').value)
       || document.getElementById('length').value < 1
@@ -77,8 +79,8 @@ function save(){
         );
     }
 
-    // create list of possible characters
-    // if not checked, store value in localStorage
+    // Create list of possible characters.
+    // If not checked, store value in window.localStorage.
     charlist = '';
 
     if(document.getElementById('latin-lowercase').checked){
@@ -150,7 +152,7 @@ function save(){
 
 var charlist = '';
 
-// check or uncheck settings based on localStorage
+// Check or uncheck settings based on window.localStorage.
 document.getElementById('length').value = window.localStorage.getItem('PasswordGenerator.htm-length') === null
   ? 15
   : window.localStorage.getItem('PasswordGenerator.htm-length');
@@ -188,7 +190,8 @@ window.onkeydown = function(e){
     var key = window.event ? event : e;
     key = key.charCode ? key.charCode : key.keyCode;
 
-    if(key === 72){// H
+    // H: generate a new password.
+    if(key === 72){
         generate();
     }
 };
