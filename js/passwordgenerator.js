@@ -189,8 +189,8 @@ document.getElementById('symbols-touse').value = '~!@#$%^&*()-_=+[{]}\\|;:\'\",<
 window.onkeydown = function(e){
     var key = e.keyCode || e.which;
 
-    // H: generate a new password.
-    if(key === 72){
+    // ENTER: generate a new password.
+    if(key === 13){
         generate();
     }
 };
