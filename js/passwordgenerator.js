@@ -44,7 +44,6 @@ function reset(){
     document.getElementById('numbers').checked = true;
     document.getElementById('other-lowercase').checked = true;
     document.getElementById('other-uppercase').checked = true;
-    document.getElementById('passwords').innerHTML = '';
     document.getElementById('symbols').checked = true;
 
     save();
