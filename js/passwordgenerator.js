@@ -20,10 +20,10 @@ function generate(){
             passwords += charlist.substr(
               Math.floor(Math.random() * charlist.length - 1),
               1
-            ).replace(/&/g,'&amp;') // &
-             .replace(/>/g,'&gt;') // >
-             .replace(/</g,'&lt;') // <
-             .replace(/"/g,'&quot;'); // "
+            ).replace(/&/g,'&amp;')
+             .replace(/>/g,'&gt;')
+             .replace(/</g,'&lt;')
+             .replace(/"/g,'&quot;');
         }while(character_loopcounter--);
 
         passwords += '<br>';
