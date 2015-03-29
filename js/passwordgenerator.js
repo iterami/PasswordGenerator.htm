@@ -33,7 +33,7 @@ function generate(){
 }
 
 function reset(){
-    if(!confirm('Reset settings?')){
+    if(!window.confirm('Reset settings?')){
         return;
     }
 
