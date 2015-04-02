@@ -160,9 +160,8 @@ window.onkeydown = function(e){
 
 window.onload = function(e){
     // Fetch settings from window.localStorage and update settings inputs.
-    document.getElementById('length').value = window.localStorage.getItem('PasswordGenerator.htm-length') === null
-      ? 15
-      : window.localStorage.getItem('PasswordGenerator.htm-length');
+    document.getElementById('length').value =
+      window.localStorage.getItem('PasswordGenerator.htm-length') || 15;
 
     document.getElementById('latin-lowercase').checked =
       window.localStorage.getItem('PasswordGenerator.htm-latin-lowercase') === null;
@@ -171,9 +170,7 @@ window.onload = function(e){
       window.localStorage.getItem('PasswordGenerator.htm-latin-uppercase') === null;
 
     document.getElementById('number-of-passwords').value =
-      window.localStorage.getItem('PasswordGenerator.htm-number-of-passwords') === null
-        ? 1
-        : window.localStorage.getItem('PasswordGenerator.htm-number-of-passwords');
+      window.localStorage.getItem('PasswordGenerator.htm-number-of-passwords') || 1;
 
     document.getElementById('numbers').checked =
       window.localStorage.getItem('PasswordGenerator.htm-numbers') === null;
