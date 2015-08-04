@@ -162,33 +162,24 @@ window.onkeydown = function(e){
 
 window.onload = function(e){
     // Fetch settings from window.localStorage and update settings inputs.
+    var ids = [
+      'latin-lowercase',
+      'latin-uppercase',
+      'numbers',
+      'other-lowercase',
+      'other-uppercase',
+      'symbols',
+    ];
+    for(var id in ids){
+        document.getElementById(ids[id]).checked =
+          window.localStorage.getItem('PasswordGenerator.htm-' + ids[id]) === null;
+    }
     document.getElementById('length').value =
       window.localStorage.getItem('PasswordGenerator.htm-length') || 15;
-
-    document.getElementById('latin-lowercase').checked =
-      window.localStorage.getItem('PasswordGenerator.htm-latin-lowercase') === null;
-
-    document.getElementById('latin-uppercase').checked =
-      window.localStorage.getItem('PasswordGenerator.htm-latin-uppercase') === null;
-
     document.getElementById('number-of-passwords').value =
       window.localStorage.getItem('PasswordGenerator.htm-number-of-passwords') || 1;
 
-    document.getElementById('numbers').checked =
-      window.localStorage.getItem('PasswordGenerator.htm-numbers') === null;
-
-    document.getElementById('other-lowercase').checked =
-      window.localStorage.getItem('PasswordGenerator.htm-other-lowercase') === null;
-
     document.getElementById('other-lowercase-touse').value = 'áčďéěiíňóřšťúůýž';
-
-    document.getElementById('other-uppercase').checked =
-      window.localStorage.getItem('PasswordGenerator.htm-other-uppercase') === null;
-
     document.getElementById('other-uppercase-touse').value = 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ';
-
-    document.getElementById('symbols').checked =
-      window.localStorage.getItem('PasswordGenerator.htm-symbols') === null;
-
     document.getElementById('symbols-touse').value = '~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?';
 };
