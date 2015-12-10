@@ -12,9 +12,10 @@ function generate(){
 
     // Create new password.
     var password_loopcounter = document.getElementById('number-of-passwords').value - 1;
+    var character_looptotal = document.getElementById('length').value - 1;
     do{
         // Add character to current password.
-        var character_loopcounter = document.getElementById('length').value - 1;
+        var character_loopcounter = character_looptotal;
         do{
             // Select random characters from possible character list...
             //   ...handle the HTML symbols...
@@ -57,29 +58,31 @@ function reset(override){
 
 // Save settings into window.localStorage if they differ from default.
 function save(){
-    if(isNaN(document.getElementById('length').value)
-      || document.getElementById('length').value < 1
-      || document.getElementById('length').value == 15){
+    var length = document.getElementById('length').value;
+    if(isNaN(length)
+      || length < 1
+      || length == 15){
         document.getElementById('length').value = 15;
         window.localStorage.removeItem('PasswordGenerator.htm-length');
 
     }else{
         window.localStorage.setItem(
           'PasswordGenerator.htm-length',
-          document.getElementById('length').value
+          length
         );
     }
 
-    if(isNaN(document.getElementById('number-of-passwords').value)
-      || document.getElementById('number-of-passwords').value < 1
-      || document.getElementById('number-of-passwords').value == 1){
+    var number_of_passwords = document.getElementById('number-of-passwords').value;
+    if(isNaN(number_of_passwords)
+      || number_of_passwords < 1
+      || number_of_passwords == 1){
         document.getElementById('number-of-passwords').value = 1;
         window.localStorage.removeItem('PasswordGenerator.htm-number-of-passwords');
 
     }else{
         window.localStorage.setItem(
           'PasswordGenerator.htm-number-of-passwords',
-          document.getElementById('number-of-passwords').value
+          number_of_passwords
         );
     }
 
