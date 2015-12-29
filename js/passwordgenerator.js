@@ -41,17 +41,28 @@ function reset(override){
         return;
     }
 
-    document.getElementById('latin-lowercase').checked = true;
-    document.getElementById('latin-uppercase').checked = true;
-    document.getElementById('length').value = 15;
-    document.getElementById('number-of-passwords').value = 1;
-    document.getElementById('numbers').checked = true;
-    document.getElementById('other-lowercase').checked = true;
-    document.getElementById('other-lowercase-touse').value = 'áčďéěiíňóřšťúůýž';
-    document.getElementById('other-uppercase').checked = true;
-    document.getElementById('other-uppercase-touse').value = 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ';
-    document.getElementById('symbols').checked = true;
-    document.getElementById('symbols-touse').value = '~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?';
+    var ids = {
+      'latin-lowercase': true,
+      'latin-uppercase': true,
+      'numbers': true,
+      'other-lowercase': true,
+      'other-uppercase': true,
+      'symbols': true,
+    };
+    for(var id in ids){
+        document.getElementById(id).checked = ids[id];
+    }
+
+    ids = {
+      'length': 15,
+      'number-of-passwords': 1,
+      'other-lowercase-touse': 'áčďéěíňóřšťúůýž',
+      'other-uppercase-touse': 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ',
+      'symbols-touse': '~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
+    };
+    for(var id in ids){
+        document.getElementById(id).value = ids[id];
+    }
 
     save();
 }
@@ -134,7 +145,7 @@ window.onload = function(e){
       'latin-uppercase': 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
       'number-of-passwords': 1,
       'numbers': '0123456789',
-      'other-lowercase-touse': 'áčďéěiíňóřšťúůýž',
+      'other-lowercase-touse': 'áčďéěíňóřšťúůýž',
       'other-uppercase-touse': 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ',
       'symbols-touse': '~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
     };
