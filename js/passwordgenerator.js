@@ -78,7 +78,6 @@ function save(){
         if(value == ids[id]
           || isNaN(value)
           || value < 1){
-            document.getElementById(id).value = ids[id];
             window.localStorage.removeItem('PasswordGenerator.htm-' + id);
 
         }else{
