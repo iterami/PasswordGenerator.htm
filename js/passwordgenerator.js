@@ -50,16 +50,14 @@ function generate(){
     document.getElementById('passwords').innerHTML = passwords;
 }
 
-window.onkeydown = function(e){
-    var key = e.keyCode || e.which;
-
-    // ENTER: generate a new password.
-    if(key === 13){
-        generate();
-    }
-};
-
 window.onload = function(e){
+    init_input(
+      {
+        13: {
+          'todo': generate,
+        },
+      }
+    );
     init_settings(
       'PasswordGenerator.htm-',
       {
