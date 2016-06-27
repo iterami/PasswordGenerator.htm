@@ -2,39 +2,41 @@
 <meta charset=utf-8>
 <meta content="width=device-width,initial-scale=1" name=viewport>
 <title>PasswordGenerator.htm</title>
-<link href=css/passwordgenerator.css rel=stylesheet>
+<link href=../common/css/dom.css rel=stylesheet>
 
-<input id=length value=15>Length<br>
-<div>
-    Numbers:<br>
-    Symbols:<br>
+<div class=left>
+    <input id=length value=15>Length<br>
+    <div class=inline>
+        Numbers:<br>
+        Symbols:<br>
+        <br>
+        lowercase:<br>
+        UPPERCASE:
+    </div>
+    <div class=inline>
+        <input id=numbers type=checkbox><br>
+        <input id=symbols type=checkbox><br>
+        Latin<br>
+        <input id=latin-lowercase type=checkbox><br>
+        <input id=latin-uppercase type=checkbox>
+    </div>
+    <div class=inline>
+        Other<br>
+        <input id=other-lowercase type=checkbox><br>
+        <input id=other-uppercase type=checkbox>
+    </div>
+    <div class=inline>
+        <input id=symbols-touse><br>
+        <br>
+        <input id=other-lowercase-touse><br>
+        <input id=other-uppercase-touse>
+    </div>
     <br>
-    lowercase:<br>
-    UPPERCASE:
+    <input id=number-of-passwords value=1>x<br>
+    <input onclick=generate() type=button value="Generate [ENTER]"><input onclick=reset() type=button value=Reset>
+    <hr>
+    <div id=passwords></div>
 </div>
-<div>
-    <input id=numbers type=checkbox><br>
-    <input id=symbols type=checkbox><br>
-    Latin<br>
-    <input id=latin-lowercase type=checkbox><br>
-    <input id=latin-uppercase type=checkbox>
-</div>
-<div>
-    Other<br>
-    <input id=other-lowercase type=checkbox><br>
-    <input id=other-uppercase type=checkbox>
-</div>
-<div>
-    <input id=symbols-touse><br>
-    <br>
-    <input id=other-lowercase-touse><br>
-    <input id=other-uppercase-touse>
-</div>
-<br>
-<input id=number-of-passwords value=1>x<br>
-<input onclick=generate() type=button value="Generate [ENTER]"><input onclick=reset() type=button value=Reset>
-<hr>
-<div id=passwords></div>
 
 <script src=../common/js/input.js></script>
 <script src=../common/js/settings.js></script>
