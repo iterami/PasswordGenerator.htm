@@ -1,19 +1,19 @@
 'use strict';
 
 function generate(){
-    save();
+    settings_save();
 
     var charlist = '';
     var ids = {
       'latin-lowercase': 'abcdefghijklmnopqrstuvwxyz',
       'latin-uppercase': 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
       'numbers': '0123456789',
-      'other-lowercase': settings['other-lowercase-touse'],
-      'other-uppercase': settings['other-uppercase-touse'],
-      'symbols': settings['symbols-touse'],
+      'other-lowercase': settings_settings['other-lowercase-touse'],
+      'other-uppercase': settings_settings['other-uppercase-touse'],
+      'symbols': settings_settings['symbols-touse'],
     };
     for(var id in ids){
-        if(settings[id]){
+        if(settings_settings[id]){
             charlist += ids[id];
         }
     }
@@ -26,8 +26,8 @@ function generate(){
     var passwords = '';
 
     // Create new password.
-    var character_looptotal = settings['length'] - 1;
-    var password_loopcounter = settings['number-of-passwords'] - 1;
+    var character_looptotal = settings_settings['length'] - 1;
+    var password_loopcounter = settings_settings['number-of-passwords'] - 1;
     do{
         // Add character to current password.
         var character_loopcounter = character_looptotal;
@@ -58,7 +58,7 @@ window.onload = function(e){
         },
       }
     );
-    init_settings(
+    settings_init(
       'PasswordGenerator.htm-',
       {
         'length': 15,
@@ -75,5 +75,6 @@ window.onload = function(e){
       }
     );
 
-    update_settings();
+    settings_update();
+    generate();
 };
