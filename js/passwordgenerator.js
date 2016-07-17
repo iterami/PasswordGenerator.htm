@@ -36,7 +36,7 @@ function generate(){
             //   ...handle the HTML symbols...
             //   ...and add it to the passwords string.
             passwords += charlist.substr(
-              Math.floor(Math.random() * charlist.length - 1),
+              random_integer(charlist.length - 1),
               1
             ).replace(/&/g,'&amp;')
              .replace(/>/g,'&gt;')
