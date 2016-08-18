@@ -17,23 +17,20 @@ function generate(){
             charlist += ids[id];
         }
     }
-
     if(charlist.length <= 0){
         document.getElementById('passwords').innerHTML = 'You must select at least one option.';
         return;
     }
 
-    var passwords = '';
-
-    // Create new password.
+    // Generate passwords.
     var loopcounter = settings_settings['number-of-passwords'] - 1;
+    var passwords = '';
     do{
         passwords += random_string(
           settings_settings['length'] - 1,
           charlist
         ) + '<br>';
     }while(loopcounter--);
-
     document.getElementById('passwords').innerHTML = passwords;
 }
 
@@ -48,9 +45,9 @@ window.onload = function(e){
     settings_init(
       'PasswordGenerator.htm-',
       {
-        'length': 15,
         'latin-lowercase': true,
         'latin-uppercase': true,
+        'length': 15,
         'number-of-passwords': 1,
         'numbers': true,
         'other-lowercase': true,
