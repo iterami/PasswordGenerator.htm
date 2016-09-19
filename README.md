@@ -5,11 +5,5 @@ Generate a specified number of random passwords of specified length and allowed 
 
 ---
 
-Action            | Key
-------------------|------
-Generate Password | ENTER
-
----
-
 Requires:
 * [iterami/common](https://github.com/iterami/common)
