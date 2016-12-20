@@ -26,10 +26,12 @@ function generate(){
     var loopcounter = settings_settings['number-of-passwords'] - 1;
     var passwords = '';
     do{
-        passwords += random_string(
-          settings_settings['length'] - 1,
-          charlist
-        ) + '<br>';
+        passwords += string_format_html({
+          'string': random_string(
+            settings_settings['length'] - 1,
+            charlist
+          ),
+        }) + '<br>';
     }while(loopcounter--);
     document.getElementById('passwords').innerHTML = passwords;
 }
