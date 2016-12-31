@@ -44,9 +44,9 @@ window.onload = function(e){
         },
       }
     );
-    settings_init(
-      'PasswordGenerator.htm-',
-      {
+    settings_init({
+      'prefix': 'PasswordGenerator.htm-',
+      'settings': {
         'latin-lowercase': true,
         'latin-uppercase': true,
         'length': 15,
@@ -58,8 +58,8 @@ window.onload = function(e){
         'other-uppercase-touse': 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ',
         'symbols': true,
         'symbols-touse': '~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
-      }
-    );
+      },
+    });
 
     settings_update();
     generate();
