@@ -27,10 +27,10 @@ function generate(){
     var passwords = '';
     do{
         passwords += string_format_html({
-          'string': random_string(
-            settings_settings['length'] - 1,
-            charlist
-          ),
+          'string': random_string({
+            'characters': charlist,
+            'length': settings_settings['length'] - 1,
+          }),
         }) + '<br>';
     }while(loopcounter--);
     document.getElementById('passwords').innerHTML = passwords;
