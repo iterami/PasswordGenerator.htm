@@ -1,19 +1,19 @@
 'use strict';
 
 function generate(){
-    settings_save();
+    storage_save();
 
     var charlist = '';
     var ids = {
       'latin-lowercase': 'abcdefghijklmnopqrstuvwxyz',
       'latin-uppercase': 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
       'numbers': '0123456789',
-      'other-lowercase': settings_settings['other-lowercase-touse'],
-      'other-uppercase': settings_settings['other-uppercase-touse'],
-      'symbols': settings_settings['symbols-touse'],
+      'other-lowercase': storage_data['other-lowercase-touse'],
+      'other-uppercase': storage_data['other-uppercase-touse'],
+      'symbols': storage_data['symbols-touse'],
     };
     for(var id in ids){
-        if(settings_settings[id]){
+        if(storage_data[id]){
             charlist += ids[id];
         }
     }
@@ -23,13 +23,13 @@ function generate(){
     }
 
     // Generate passwords.
-    var loopcounter = settings_settings['number-of-passwords'] - 1;
+    var loopcounter = storage_data['number-of-passwords'] - 1;
     var passwords = '';
     do{
         passwords += string_format_html({
           'string': random_string({
             'characters': charlist,
-            'length': settings_settings['length'] - 1,
+            'length': storage_data['length'] - 1,
           }),
         }) + '<br>';
     }while(loopcounter--);
@@ -44,9 +44,8 @@ window.onload = function(e){
         },
       },
     });
-    settings_init({
-      'prefix': 'PasswordGenerator.htm-',
-      'settings': {
+    storage_init({
+      'data': {
         'latin-lowercase': true,
         'latin-uppercase': true,
         'length': 15,
@@ -59,11 +58,14 @@ window.onload = function(e){
         'symbols': true,
         'symbols-touse': '~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
       },
+      'prefix': 'PasswordGenerator.htm-',
     });
 
-    settings_update();
+    storage_update();
     generate();
 
     document.getElementById('generate').onclick = generate;
-    document.getElementById('settings-reset').onclick = settings_reset;
+    document.getElementById('storage-reset').onclick = function(e){
+        storage_reset();
+    };
 };
