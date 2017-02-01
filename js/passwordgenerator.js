@@ -7,7 +7,7 @@ function generate(){
     var ids = {
       'latin-lowercase': 'abcdefghijklmnopqrstuvwxyz',
       'latin-uppercase': 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-      'numbers': '0123456789',
+      'numbers': storage_data['numbers-touse'],
       'other-lowercase': storage_data['other-lowercase-touse'],
       'other-uppercase': storage_data['other-uppercase-touse'],
       'symbols': storage_data['symbols-touse'],
@@ -51,6 +51,7 @@ window.onload = function(e){
         'length': 15,
         'number-of-passwords': 1,
         'numbers': true,
+        'numbers-touse': '0123456789',
         'other-lowercase': true,
         'other-lowercase-touse': 'áčďéěíňóřšťúůýž',
         'other-uppercase': true,
