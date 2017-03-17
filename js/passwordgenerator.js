@@ -3,21 +3,7 @@
 function generate(){
     storage_save();
 
-    var charlist = '';
-    var ids = {
-      'latin-lowercase': 'abcdefghijklmnopqrstuvwxyz',
-      'latin-uppercase': 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-      'numbers': storage_data['numbers-touse'],
-      'other-lowercase': storage_data['other-lowercase-touse'],
-      'other-uppercase': storage_data['other-uppercase-touse'],
-      'symbols': storage_data['symbols-touse'],
-    };
-    for(var id in ids){
-        if(storage_data[id]){
-            charlist += ids[id];
-        }
-    }
-    if(charlist.length <= 0){
+    if(storage_data['touse'].length <= 0){
         document.getElementById('passwords').innerHTML = 'You must select at least one option.';
         return;
     }
@@ -28,7 +14,7 @@ function generate(){
     do{
         passwords += string_format_html({
           'string': random_string({
-            'characters': charlist,
+            'characters': storage_data['touse'],
             'length': storage_data['length'] - 1,
           }),
         }) + '<br>';
@@ -46,18 +32,9 @@ window.onload = function(e){
     });
     storage_init({
       'data': {
-        'latin-lowercase': true,
-        'latin-uppercase': true,
         'length': 15,
         'number-of-passwords': 1,
-        'numbers': true,
-        'numbers-touse': '0123456789',
-        'other-lowercase': true,
-        'other-lowercase-touse': 'áčďéěíňóřšťúůýž',
-        'other-uppercase': true,
-        'other-uppercase-touse': 'ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ',
-        'symbols': true,
-        'symbols-touse': '~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
+        'touse': '0123456789abcdefghijklmnopqrstuvwxyzáčďéěíňóřšťúůýžABCDEFGHIJKLMNOPQRSTUVWXYZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
       },
       'prefix': 'PasswordGenerator.htm-',
     });

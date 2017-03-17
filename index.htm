@@ -4,31 +4,9 @@
 <title>PasswordGenerator.htm</title>
 <link href=../common/css/dom.css rel=stylesheet>
 
-<table>
-  <tr>
-    <td colspan=2>Amount
-    <td><input id=number-of-passwords value=1>
-  <tr>
-    <td colspan=2>Length
-    <td><input id=length value=15>
-  <tr>
-    <td colspan=2>Numbers<input id=numbers type=checkbox>
-    <td><input id=numbers-touse>
-  <tr>
-    <td colspan=2>Symbols<input id=symbols type=checkbox>
-    <td><input id=symbols-touse>
-  <tr>
-    <td>lowercase
-    <td>Latin<input id=latin-lowercase type=checkbox><br>
-      Other<input id=other-lowercase type=checkbox>
-    <td><input id=other-lowercase-touse>
-  <tr>
-    <td>UPPERCASE
-    <td>Latin<input id=latin-uppercase type=checkbox><br>
-      Other<input id=other-uppercase type=checkbox>
-    <td><input id=other-uppercase-touse>
-</table>
-<input id=generate type=button value="Generate [ENTER]"><input id=storage-reset type=button value=Reset>
+<textarea id=touse></textarea><br>
+Length=<input id=length value=15><input id=storage-reset type=button value=Reset><br>
+<input id=generate type=button value="Generate [ENTER]">x<input id=number-of-passwords value=1>
 <hr>
 <div id=passwords></div>
 
