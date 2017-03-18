@@ -9,7 +9,7 @@ function generate(){
     }
 
     // Generate passwords.
-    var loopcounter = storage_data['number-of-passwords'] - 1;
+    var loopcounter = storage_data['repeat'] - 1;
     var passwords = '';
     do{
         passwords += string_format_html({
@@ -33,7 +33,7 @@ window.onload = function(e){
     storage_init({
       'data': {
         'length': 15,
-        'number-of-passwords': 1,
+        'repeat': 1,
         'touse': '0123456789abcdefghijklmnopqrstuvwxyzáčďéěíňóřšťúůýžABCDEFGHIJKLMNOPQRSTUVWXYZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
       },
       'prefix': 'PasswordGenerator.htm-',
