@@ -13,7 +13,7 @@ function generate(){
     var passwords = '';
     do{
         passwords += string_format_html({
-          'string': random_string({
+          'string': core_random_string({
             'characters': storage_data['touse'],
             'length': storage_data['length'] - 1,
           }),
