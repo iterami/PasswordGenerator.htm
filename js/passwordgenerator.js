@@ -22,8 +22,8 @@ function generate(){
     document.getElementById('passwords').innerHTML = passwords;
 }
 
-window.onload = function(e){
-    core_input_init({
+function repo_init(){
+    core_input_binds_add({
       'keybinds': {
         13: {
           'todo': generate,
@@ -46,4 +46,4 @@ window.onload = function(e){
     document.getElementById('storage-reset').onclick = function(e){
         core_storage_reset();
     };
-};
+}
