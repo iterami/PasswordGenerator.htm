@@ -23,13 +23,6 @@ function generate(){
 }
 
 function repo_init(){
-    core_input_binds_add({
-      'keybinds': {
-        13: {
-          'todo': generate,
-        },
-      },
-    });
     core_storage_init({
       'data': {
         'length': 15,
@@ -37,6 +30,13 @@ function repo_init(){
         'touse': '0123456789abcdefghijklmnopqrstuvwxyzáčďéěíňóřšťúůýžABCDEFGHIJKLMNOPQRSTUVWXYZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
       },
       'prefix': 'PasswordGenerator.htm-',
+    });
+    core_events_bind({
+      'keybinds': {
+        13: {
+          'todo': generate,
+        },
+      },
     });
 
     core_storage_update();
