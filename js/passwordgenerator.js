@@ -3,7 +3,7 @@
 function generate(){
     core_storage_save();
 
-    if(core_storage_data['touse'].length <= 0){
+    if(core_storage_data['characters'].length <= 0){
         document.getElementById('passwords').innerHTML = 'You must select at least one option.';
         return;
     }
@@ -14,7 +14,7 @@ function generate(){
     do{
         passwords += string_format_html({
           'string': core_random_string({
-            'characters': core_storage_data['touse'],
+            'characters': core_storage_data['characters'],
             'length': core_storage_data['length'] - 1,
           }),
         }) + '<br>';
@@ -30,18 +30,15 @@ function repo_init(){
         },
       },
       'storage': {
+        'characters': '0123456789abcdefghijklmnopqrstuvwxyzáčďéěíňóřšťúůýžABCDEFGHIJKLMNOPQRSTUVWXYZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
         'length': 15,
         'repeat': 1,
-        'touse': '0123456789abcdefghijklmnopqrstuvwxyzáčďéěíňóřšťúůýžABCDEFGHIJKLMNOPQRSTUVWXYZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
       },
+      'storage-menu': '<textarea id=characters></textarea><br><input id=length>Length<br><input id=repeat>Repeat',
       'title': 'PasswordGenerator.htm',
     });
 
-    core_storage_update();
     generate();
 
     document.getElementById('generate').onclick = generate;
-    document.getElementById('storage-reset').onclick = function(e){
-        core_storage_reset();
-    };
 }
