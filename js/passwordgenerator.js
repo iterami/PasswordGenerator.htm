@@ -3,11 +3,6 @@
 function generate(){
     core_storage_save();
 
-    if(core_storage_data['characters'].length <= 0){
-        document.getElementById('passwords').innerHTML = 'You must select at least one option.';
-        return;
-    }
-
     // Generate passwords.
     var loopcounter = core_storage_data['repeat'] - 1;
     var passwords = '';
