@@ -34,6 +34,5 @@ function repo_init(){
     });
 
     generate();
-
     document.getElementById('generate').onclick = generate;
 }
