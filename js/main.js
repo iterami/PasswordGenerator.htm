@@ -2,6 +2,11 @@
 
 function repo_init(){
     core_repo_init({
+      'info-events': {
+        'generate': {
+          'todo': generate,
+        },
+      },
       'keybinds': {
         13: {
           'todo': generate,
@@ -17,5 +22,4 @@ function repo_init(){
     });
 
     generate();
-    document.getElementById('generate').onclick = generate;
 }
