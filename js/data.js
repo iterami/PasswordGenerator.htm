@@ -4,8 +4,8 @@ function generate(){
     core_storage_save();
 
     // Generate passwords.
-    var loopcounter = core_storage_data['repeat'] - 1;
-    var passwords = '';
+    let loopcounter = core_storage_data['repeat'] - 1;
+    let passwords = '';
     do{
         passwords += core_html_format({
           'string': core_random_string({
