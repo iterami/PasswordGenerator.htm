@@ -12,6 +12,7 @@ function repo_init(){
           'todo': generate,
         },
       },
+      'menu': true,
       'storage': {
         'characters': '0123456789abcdefghijklmnopqrstuvwxyzáčďéěíňóřšťúůýžABCDEFGHIJKLMNOPQRSTUVWXYZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
         'length': 15,
