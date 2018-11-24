@@ -13,6 +13,7 @@ function repo_init(){
         },
       },
       'menu': true,
+      'menu-block-events': false,
       'storage': {
         'characters': '0123456789abcdefghijklmnopqrstuvwxyzáčďéěíňóřšťúůýžABCDEFGHIJKLMNOPQRSTUVWXYZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
         'length': 15,
