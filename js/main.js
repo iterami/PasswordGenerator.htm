@@ -19,7 +19,9 @@ function repo_init(){
         'length': 64,
         'repeat': 1,
       },
-      'storage-menu': '<textarea id=characters></textarea><table><tr><td><input id=length><td>Length<tr><td><input id=repeat><td>Repeat</table>',
+      'storage-menu': '<textarea id=characters></textarea>'
+        + '<table><tr><td><input id=length><td>Length'
+        + '<tr><td><input id=repeat><td>Repeat</table>',
       'title': 'PasswordGenerator.htm',
     });
 
