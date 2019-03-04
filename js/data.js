@@ -12,7 +12,7 @@ function generate(){
             'characters': core_storage_data['characters'],
             'length': core_storage_data['length'] - 1,
           }),
-        }) + '<br>';
+        }) + '\n\n';
     }while(loopcounter--);
-    document.getElementById('passwords').innerHTML = passwords;
+    document.getElementById('passwords').value = passwords;
 }

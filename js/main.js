@@ -7,6 +7,7 @@ function repo_init(){
           'onclick': generate,
         },
       },
+      'info': '<input id=generate type=button value="Generate [ENTER]"><br><textarea id=passwords></textarea>',
       'keybinds': {
         13: {
           'todo': generate,
