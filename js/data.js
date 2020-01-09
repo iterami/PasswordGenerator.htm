@@ -12,7 +12,11 @@ function generate(){
             'characters': core_storage_data['characters'],
             'length': core_storage_data['length'] - 1,
           }),
-        }) + '\n\n';
+        });
+
+        if(loopcounter > 0){
+            passwords += '\n\n';
+        }
     }while(loopcounter--);
     document.getElementById('passwords').value = passwords;
 }
