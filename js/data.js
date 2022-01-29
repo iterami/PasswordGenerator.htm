@@ -3,7 +3,6 @@
 function generate(){
     core_storage_save();
 
-    // Generate passwords.
     let loopcounter = core_storage_data['repeat'] - 1;
     let passwords = '';
     do{
