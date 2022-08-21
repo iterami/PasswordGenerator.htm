@@ -1,7 +1,13 @@
 'use strict';
 
 function generate(){
-    core_storage_save();
+    core_storage_save({
+      'keys': [
+        'characters',
+        'length',
+        'repeat',
+      ],
+    });
 
     let loopcounter = core_storage_data['repeat'] - 1;
     let passwords = '';
