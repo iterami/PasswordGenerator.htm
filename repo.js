@@ -35,7 +35,7 @@ function repo_init(){
       },
       'info': '<input id=generate type=button value="Generate [ENTER]"><br><textarea id=passwords></textarea>',
       'keybinds': {
-        13: {
+        'Enter': {
           'todo': generate,
         },
       },
