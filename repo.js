@@ -35,7 +35,6 @@ function repo_init(){
           'todo': generate,
         },
       },
-      'menu': true,
       'menu-block-events': false,
       'menu-lock': true,
       'storage': {
