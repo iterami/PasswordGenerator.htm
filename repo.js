@@ -19,7 +19,7 @@ function generate(){
             passwords += '\n\n';
         }
     }while(loopcounter--);
-    document.getElementById('passwords').value = passwords;
+    core_elements['passwords'].value = passwords;
 }
 
 function repo_init(){
@@ -46,6 +46,9 @@ function repo_init(){
         + '<table><tr><td><input class=mini id=length min=1 step=any type=number><td>Length'
         + '<tr><td><input class=mini id=repeat min=1 step=any type=number><td>Repeat</table>',
       'title': 'PasswordGenerator.htm',
+      'ui-elements': [
+        'passwords',
+      ],
     });
 
     generate();
