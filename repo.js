@@ -12,7 +12,7 @@ function generate(){
     do{
         passwords += core_random_string({
           'characters': core_storage_data['characters'],
-          'length': core_storage_data['length'] - 1,
+          'length': core_storage_data['length'],
         });
 
         if(loopcounter > 0){
