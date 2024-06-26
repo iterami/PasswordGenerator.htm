@@ -7,7 +7,7 @@ function generate(){
       'repeat',
     ]);
 
-    let loopcounter = core_storage_data['repeat'] - 1;
+    let loopcounter = Math.floor(core_storage_data['repeat']) - 1;
     let passwords = '';
     do{
         passwords += core_random_string({
@@ -43,8 +43,8 @@ function repo_init(){
         'repeat': 1,
       },
       'storage-menu': '<textarea id=characters></textarea>'
-        + '<table><tr><td><input class=mini id=length min=1 step=any type=number><td>Length'
-        + '<tr><td><input class=mini id=repeat min=1 step=any type=number><td>Repeat</table>',
+        + '<table><tr><td><input class=mini id=length min=1 step=1 type=number><td>Length'
+        + '<tr><td><input class=mini id=repeat min=1 step=1 type=number><td>Repeat</table>',
       'title': 'PasswordGenerator.htm',
       'ui-elements': [
         'passwords',
