@@ -7,19 +7,19 @@ function generate(){
       'repeat',
     ]);
 
-    let loopcounter = Math.floor(core_storage_data['repeat']) - 1;
+    let loopcounter = Math.floor(core_storage_data.repeat) - 1;
     let passwords = '';
     do{
         passwords += core_random_string({
-          'characters': core_storage_data['characters'],
-          'length': core_storage_data['length'],
+          'characters': core_storage_data.characters,
+          'length': core_storage_data.length,
         });
 
         if(loopcounter > 0){
             passwords += '\n\n';
         }
     }while(loopcounter--);
-    core_elements['passwords'].value = passwords;
+    core_elements.passwords.value = passwords;
 }
 
 function repo_init(){
