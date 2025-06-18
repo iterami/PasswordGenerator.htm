@@ -36,7 +36,7 @@ function repo_init(){
         },
       },
       'menu_block_events': false,
-      'menu-lock': true,
+      'menu_lock': true,
       'storage': {
         'characters': '0123456789abcdefghijklmnopqrstuvwxyzáčďéěíňóřšťúůýžABCDEFGHIJKLMNOPQRSTUVWXYZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?',
         'length': 64,
