@@ -46,7 +46,7 @@ function repo_init(){
         + '<table><tr><td><input class=mini id=length min=1 step=1 type=number><td>Length'
         + '<tr><td><input class=mini id=repeat min=1 step=1 type=number><td>Repeat</table>',
       'title': 'PasswordGenerator.htm',
-      'ui-elements': [
+      'ui_elements': [
         'passwords',
       ],
     });
