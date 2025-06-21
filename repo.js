@@ -42,7 +42,7 @@ function repo_init(){
         'length': 64,
         'repeat': 1,
       },
-      'storage-menu': '<textarea id=characters></textarea>'
+      'storage_menu': '<textarea id=characters></textarea>'
         + '<table><tr><td><input class=mini id=length min=1 step=1 type=number><td>Length'
         + '<tr><td><input class=mini id=repeat min=1 step=1 type=number><td>Repeat</table>',
       'title': 'PasswordGenerator.htm',
