@@ -1,18 +1,17 @@
 'use strict';
 
 function generate(){
-    let loopcounter = Math.floor(core_storage_data.repeat) - 1;
     let passwords = '';
-    do{
+    for(let i = 0; i < core_storage_data.repeat; i++){
         passwords += core_random_string({
           'characters': core_storage_data.characters,
           'length': core_storage_data.length,
         });
 
-        if(loopcounter > 0){
+        if(i > 0){
             passwords += '\n\n';
         }
-    }while(loopcounter--);
+    }
     core_elements.passwords.value = passwords;
 }
 
